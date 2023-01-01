@@ -1,0 +1,8 @@
+//
+// Created by Admin on 11.12.2022.
+//
+
+#ifndef PROJECT_NUMBER_3_FAVORITES_H
+#define PROJECT_NUMBER_3_FAVORITES_H
+
+#endif //PROJECT_NUMBER_3_FAVORITES_H
