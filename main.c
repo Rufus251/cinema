@@ -10,5 +10,7 @@
 int main() {
     printf("Hello, World\n");
     hello();
+    reg_test();
     return 0;
+
 }
