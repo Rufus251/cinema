@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
 #include "addFilm.h"
 #include "authorization.h"
 #include "catalog.h"
@@ -7,10 +10,11 @@
 #include "userInterface.h"
 
 
-int main() {
-    printf("Hello, World\n");
-    hello();
-    reg_test();
-    return 0;
+int main()
+{
+    system("chcp 65001"); system("cls");
+
+
+    registration();
 
 }
