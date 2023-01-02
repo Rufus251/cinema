@@ -55,7 +55,7 @@ void registration() {
     }
 
     for (;;) {
-        color_switch_white; puts("Введите пароль (От 3 до 20 символов):"); color_switch_green;
+        color_switch_white; puts("Введите пароль (От 6 до 20 символов):"); color_switch_green;
 
         scanf("%25s", input_str); fflush(stdin);
         if (strlen(input_str) < 6 || strlen(input_str) > 20) {
