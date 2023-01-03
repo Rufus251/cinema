@@ -17,7 +17,7 @@ typedef struct user_data {
 } user_data;
 
 void user_data_to_file(user_data user_data) {
-    FILE *USER_DATA = fopen("users.txt", "a");
+    FILE *USER_DATA = fopen("../users.txt", "a");
     fprintf(USER_DATA, "%s\n", user_data.login);
     fprintf(USER_DATA, "%s\n", user_data.password);
     fprintf(USER_DATA, "%d\n", user_data.favorites_size);
