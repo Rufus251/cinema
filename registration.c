@@ -1,22 +1,10 @@
 // Created by Admin on 11.12.2022.
 #include "stdio.h"
 #include "string.h"
-#include "ctype.h"
 #include "windows.h"
+#include "functions.h"
 
-#define FOREGROUND_WHITE (FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED)
-#define color_switch_red SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_INTENSITY);
-#define color_switch_green SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
-#define color_switch_blue SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE);
-#define color_switch_white SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_WHITE);
-#define color_switch_pink SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (FOREGROUND_RED | FOREGROUND_BLUE) | FOREGROUND_INTENSITY );
-
-
-void to_lower(char *string) {
-    for(int i = 0; i < strlen(string); i++) {
-        string[i] = tolower(string[i]);
-    }
-}
+//доделать проверка есть ли такой пользователь в базе, регулярные выражения (спец символы), карта
 
 typedef struct user_data {
 
@@ -35,7 +23,6 @@ void user_data_to_file(user_data user_data) {
     fprintf(USER_DATA, "%d\n", user_data.favorites_size);
     fprintf(USER_DATA, "%d\n\n", user_data.is_admin);
 }
-
 
 void registration() {
     user_data user_data; char input_str[25], valid_check[25];
@@ -85,19 +72,19 @@ void registration() {
     color_switch_white; puts("Подтвердить регистрацию? y / n");
 
     for (;;) {
-        scanf("%2s", input_str);
-        fflush(stdin);
+        scanf("%2s", input_str); fflush(stdin);
         to_lower(input_str);
 
         if (strcmp(input_str, "y") == 0) {
             user_data.favorites_size = 0;
             user_data.is_admin = 0;
             user_data_to_file(user_data);
-            puts("Регистрация успешно завершена");
+            system("cls"); puts("Регистрация успешно завершена, введите любой символ чтобы продолжить");
             return;
 
         } else if (strcmp(input_str, "n") == 0) {
-            puts("Регистрация отменена");
+            system("cls"); puts("Регистрация отменена, введите любой символ чтобы продолжить");
+            scanf("%c", input_str);
             return;
         } else {
             puts("Некорректный ответ, попробуйте снова");
