@@ -20,6 +20,6 @@ user_data check_if_admin(int is_admin){
 
 }
 
-void add_film(){
+void add_film() {
 
 };
