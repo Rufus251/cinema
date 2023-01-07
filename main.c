@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-
 #include "addFilm.h"
 #include "authorization.h"
 #include "catalog.h"
@@ -14,6 +13,10 @@
 int main()
 {
     system("chcp 65001"); system("cls");
+    char * filename = "films.txt";
+    load(filename);
+    scanf("123");
+    return 0;
     char input_str[25];
     for (;;) {
         puts("Вход / Регистрация\nВведите 1, чтобы зайти в уже существующий аккаунт или 2, чтобы зарегестрироваться");
