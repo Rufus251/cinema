@@ -44,16 +44,18 @@ int load(char * filename)
     c = (char *)ptr;
     // после записи считываем посимвольно из файла
 
+    while ((i= getc(fp))!=EOF)
+    {
+        *c = i;
+        c++;
+    }
+
     // перебор загруженных элементов и вывод на консоль
     printf("%d people in the file stored\n\n", n);
 
     for (int k = 0; k<n; k++)
     {
-        while ((i= getc(fp))!="\n")
-        {
-            *c = i;
-            c++;
-        }
+
         printf("%d %s %d %s %s %d\n", k + 1, (ptr + k)->name, (ptr + k)->year, (ptr + k)->country, (ptr + k)->genre, (ptr + k)->rating);
         c = 0;
     }
