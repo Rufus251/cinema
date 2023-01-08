@@ -12,9 +12,10 @@
 int main()
 {
     system("chcp 65001"); system("cls");
-    FILE *films = fopen("films.txt", "r");
+    FILE *films = fopen("../films.txt", "r");
     list whole = scan(films);
     listprint(whole);
     fclose(films);
+    scanf(" ");
     return 0;
 }

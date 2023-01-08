@@ -109,6 +109,37 @@ void move(list *a, list *b) {
     *f = pop(a);
     push(b, f);
 }
+
+list scan(FILE *in){
+    list l;
+    l.size = 0;
+    l.head = NULL;
+    l.tail = NULL;
+
+    char temp[100];
+    while (fgets(temp, 100, in) != NULL) {
+
+        catalog *f = (catalog *)malloc(sizeof(catalog));
+
+        strcpy(f->name, temp);
+
+        fgets(temp, 100, in);
+        f->year = atoi(temp);
+
+        fgets(temp, 100, in);
+        strcpy(f->country, temp);
+
+        fgets(temp, 100, in);
+        strcpy(f->genre, temp);
+
+        fgets(temp, 100, in);
+        f->rating = atof(temp);
+
+        pushback(&l, f);
+    }
+    return l;
+}
+
 void filmprint(catalog f) {
     printf("%s", f.name);
     printf("%d\n", f.year);
