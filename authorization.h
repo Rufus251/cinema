@@ -5,7 +5,8 @@
 #define PROJECT_NUMBER_3_AUTHORIZATION_H
 
 
-int user_check(user_data user_data);
+void start();
+int user_login_check(char *str);
 int login();
 
 

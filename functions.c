@@ -1,5 +1,6 @@
 #include <string.h>
 #include <ctype.h>
+#include "stdio.h"
 
 void to_lower(char *string) {
     for(int i = 0; i < strlen(string); i++) {
@@ -7,4 +8,8 @@ void to_lower(char *string) {
     }
 }
 
-
+void wait() {
+    char c;
+    scanf("%c", &c);
+    fflush(stdin);
+}
