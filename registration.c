@@ -1,20 +1,14 @@
 // Created by Admin on 11.12.2022.
-#include "stdio.h"
-#include "string.h"
-#include "windows.h"
+#include "authorization.h"
 #include "functions.h"
+
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
+
 
 //доделать проверка есть ли такой пользователь в базе, регулярные выражения (спец символы), карта
 
-typedef struct user_data {
-
-    char login[20];
-    char password[20];
-    char card[16];
-    int favorites_size;
-    int is_admin;
-
-} user_data;
 
 void user_data_to_file(user_data user_data) {
     FILE *USER_DATA = fopen("../users.txt", "a");
@@ -22,6 +16,7 @@ void user_data_to_file(user_data user_data) {
     fprintf(USER_DATA, "%s\n", user_data.password);
     fprintf(USER_DATA, "%d\n", user_data.favorites_size);
     fprintf(USER_DATA, "%d\n\n", user_data.is_admin);
+    fflush(USER_DATA);
 }
 
 void registration() {
@@ -64,7 +59,7 @@ void registration() {
         }
 
     }
-    system("cls");
+    clear;
     color_switch_white; puts("Ваши данные:"); printf("Логин: ");
     color_switch_red; printf("%s\n", user_data.login);
     color_switch_white; printf("Пароль: ");
@@ -80,12 +75,12 @@ void registration() {
             user_data.is_admin = 0;
             user_data_to_file(user_data);
             system("cls"); puts("Регистрация успешно завершена, введите любой символ чтобы продолжить");
-            return;
+            start();
 
         } else if (strcmp(input_str, "n") == 0) {
             system("cls"); puts("Регистрация отменена, введите любой символ чтобы продолжить");
             scanf("%c", input_str);
-            return;
+            start();
         } else {
             puts("Некорректный ответ, попробуйте снова");
 
