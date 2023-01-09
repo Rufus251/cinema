@@ -1,19 +1,14 @@
-//
-// Created by Admin on 11.12.2022.
-//
-
 #ifndef PROJECT_NUMBER_3_CATALOG_H
 #define PROJECT_NUMBER_3_CATALOG_H
-
 
 #include <stdio.h>
 
 typedef struct catalog {
 
-    char name[50];
+    char name[100];
     int year;
-    char country[50];
-    char genre[50];
+    char country[100];
+    char genre[100];
     float rating;
     struct catalog *next;
     struct catalog *prev;
@@ -26,19 +21,10 @@ typedef struct list {
     catalog *tail;
 } list;
 
-extern void push(list *l, catalog *f);
+user_data check_admin(int is_admin);
 extern void pushback(list *l, catalog *f);
-extern void insert(list *l, catalog *f, int n);
-extern catalog filmdelete(list *l, int n);
-extern catalog pop(list *l);
-extern void move(list *a, list *b);
 extern list scan(FILE *in);
 extern void filmprint(catalog f);
-extern void filmfprint(FILE *out, catalog f);
 extern void listprint(list l);
-extern void listfprint(FILE *out, list l);
 
-//int load();
-
-
-#endif //PROJECT_NUMBER_3_CATALOG_H
+#endif
