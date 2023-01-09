@@ -1,8 +1,23 @@
+#include "userInterface.h"
 #include "catalog.h"
+#include "addFilm.h"
+#include "authorization.h"
+
 #include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+user_data check_admin(int is_admin){
+
+    if( is_admin == 0){
+
+    }
+    if( is_admin == 1){
+
+    }
+
+}
 
 void pushback(list *l, catalog *c) {
     if (l->size > 0) {
