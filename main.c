@@ -9,16 +9,29 @@
 #include "userInterface.h"
 #include "functions.h" //кидайте туда полезные штуки которые не вписываются в другие либы
 
-int main()
-{
-    system("chcp 65001"); system("cls");
+void MishaCheck(){
 
+}
+
+
+void VasyaCheck(){
     FILE *films = fopen("../films.txt", "r");
     list whole = scan(films);
     listprint(whole);
     fclose(films);
     scanf(" ");
     //Здесь заканчивается создание списка фильмов
+}
+
+void SvetaCheck(){
+
+}
+
+int main()
+{
+    system("chcp 65001"); system("cls");
+
+    VasyaCheck();
 
 
     return 0;
