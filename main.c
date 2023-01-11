@@ -30,8 +30,9 @@ void SvetaCheck(){
 int main()
 {
     system("chcp 65001"); system("cls");
+    login();
 
-    VasyaCheck();
+
 
 
     return 0;
