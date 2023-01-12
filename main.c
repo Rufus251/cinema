@@ -31,7 +31,11 @@ int main()
 {
     system("chcp 65001"); system("cls"); // Переключает консоль на русскую кодировку и очищает её,
     // не убирайте 1 строку из мейна
-    MishaCheck();
+    //MishaCheck();
+
+    int is_admin = start();
+    int catalog_choice = check_if_admin(is_admin);
+
     return 0;
     /*
     system("chcp 65001"); system("cls");

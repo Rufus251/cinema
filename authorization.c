@@ -7,17 +7,17 @@
 
 #define skip fgets(temp, 27, USER_DATA)
 
-void start();
+int start();
 int user_check(char *str);
 int login();
 
-void start() {
+int start() {
     char input_str[25];
     for (;;) {
         puts("Вход / Регистрация\nВведите 1, чтобы зайти в уже существующий аккаунт или 2, чтобы зарегестрироваться");
         scanf("%25s", input_str); fflush(stdin);
         if (strcmp(input_str, "1") == 0) {
-            system("cls"); login();
+            system("cls"); return login();
         } else if (strcmp(input_str, "2") == 0) {
             system("cls"); registration();
         } else {
