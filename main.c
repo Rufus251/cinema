@@ -10,8 +10,9 @@
 #include "functions.h" // Кидайте туда полезные штуки которые не вписываются в другие либы
 
 void MishaCheck() {
-    char card[16] = "4111111111100072";
-    printf("%d", luhn(card));
+    char card[20]; //4111111111100031
+    scanf("%s", card); fflush(stdin);
+    printf("\n%d", another_check(card));
     wait();
 }
 
@@ -33,7 +34,8 @@ int main()
 {
     system("chcp 65001"); system("cls"); // Переключает консоль на русскую кодировку и очищает её,
     // не убирайте 1 строку из мейна
-
+    //MishaCheck();
+    //return 0;
 
     int is_admin = start();
     int catalog_choice = check_if_admin(is_admin);

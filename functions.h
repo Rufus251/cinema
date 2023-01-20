@@ -11,6 +11,6 @@
 
 void wait();
 void to_lower(char *string);
-int digit_check();
+int digit_check(char *str);
 
 #endif //PROJECT_NUMBER_3_FUNCTIONS_H

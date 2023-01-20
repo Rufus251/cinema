@@ -12,6 +12,7 @@ typedef struct user_data {
     int is_admin;
 } user_data;
 
+int another_check(char *str);
 void registration();
 void user_data_to_file(user_data user_data);
 void user_data_from_file(user_data user_data);
