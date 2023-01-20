@@ -24,7 +24,7 @@ user_data check_admin(int is_admin);
 extern void pushback(list *l, catalog *f);
 extern list scan(FILE *in);
 extern void filmprint(catalog f);
-extern void print_list(list l);
+extern void print_list();
 extern void printCurrent(catalog *pFilm);
 extern void printLeftRight(catalog *pFilm);
 extern void printDitailedCurrent(catalog *pFilm);

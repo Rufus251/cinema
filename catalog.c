@@ -63,14 +63,17 @@ void pushback(list *l, catalog *c) {
     printf("%s%d\n%s%s%0.1f\n\n", c->name, c->year, c->country, c->genre, c->rating);
 }*/
 
-void print_list(list l) {
-    catalog *current = l.head;
+void print_list() {
+    FILE *films = fopen("../films.txt", "r");
+    list whole = scan(films);
+    catalog *current = whole.head;
     int i = 0;
-    while (i < l.size) {
+    while (i < whole.size) {
         print_film(current);
         current = current->next;
         i++;
     }
+    fclose(films);
 }
 
 void print_film(catalog *c) {

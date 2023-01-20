@@ -12,21 +12,7 @@
 int main()
 {
     system("chcp 65001"); system("cls");
-
-    FILE *films = fopen("../films.txt", "r");
-    list whole = scan(films);
-    print_list(whole);
-    fclose(films);
-
-
-
-    /*while (1) {
-        printLeftRight(new -> prev -> card);
-        printDitailedCurrent(new -> card);
-        printLeftRight(new -> next -> card);
-    }*/
-
-
+    print_list();
     scanf(" ");
     //Здесь заканчивается создание списка фильмов
 
