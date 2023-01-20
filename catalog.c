@@ -59,6 +59,7 @@ void pushback(list *l, catalog *c) {
     }
 }
 
+
 /*void filmprint(catalog *c) {
     printf("%s%d\n%s%s%0.1f\n\n", c->name, c->year, c->country, c->genre, c->rating);
 }*/
