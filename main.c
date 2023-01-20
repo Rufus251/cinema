@@ -62,7 +62,7 @@ int main()
             break;
         case 3:
 
-            add_film();
+            printf("3");
             wait();
             break;
 
