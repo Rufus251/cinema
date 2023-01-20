@@ -51,7 +51,7 @@ int main()
     int catalog_choice = check_if_admin(is_admin);
     switch (catalog_choice) {
         case 1:
-            printf("1");
+            print_list();
             wait();
             break;
 
@@ -62,7 +62,7 @@ int main()
             break;
         case 3:
 
-            printf("3");
+            add_film();
             wait();
             break;
 
