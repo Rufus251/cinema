@@ -21,7 +21,7 @@ int start() {
         } else if (strcmp(input_str, "2") == 0) {
             system("cls"); registration();
         } else {
-            system("cls"); puts("Некорректный ответ.\nВведите 1, чтобы зайти в уже существующий аккаунт или 2, чтобы зарегестрироваться");
+            system("cls"); puts("Некорректный ответ");
         }
     }
 }
@@ -63,7 +63,7 @@ int user_pass_check(char str[27]) {
 
 
 int login() {
-    char input_str[25];
+    char input_str[25], name[25];
     for (;;) {
         color_switch_white; puts("Введите логин:"); color_switch_green;
         scanf("%25s", input_str); fflush(stdin);
@@ -73,28 +73,28 @@ int login() {
             wait(); clear;
             continue;
         } else if (login_check == 0 || login_check == 1) {
+            strncpy(name, input_str, 25);
             color_switch_white; printf("Введите пароль:\n"); color_switch_green;
             scanf("%25s", input_str); fflush(stdin); color_switch_white;
             int pass_check = user_pass_check(input_str);
             if (pass_check == 1) {
                 //user
                 if (login_check == 0) {
-                    color_switch_white; printf("Здарова "); color_switch_red; printf("%s\n", input_str);
+                    color_switch_white; printf("Здарова "); color_switch_red; printf("%s\n", name);
                     color_switch_white; puts("Нажми любую хуйню чтобы продолжить");
                     wait(); clear;
                     return 0;
                 }
                 //admin
                 if (login_check == 1) {
-                    color_switch_white; printf("Здарова админ "); color_switch_red; printf("%s\n", input_str);
+                    color_switch_white; printf("Здарова админ "); color_switch_red; printf("%s\n", name);
                     color_switch_white; puts("Нажми любую хуйню чтобы продолжить");
                     wait(); clear;
                     return 1;
                 }
             } else {
-                printf("Неверный пароль"); wait();
-                puts("Введите любую хуйню чтобы продолжить");
-                clear; continue;
+                printf("Неверный пароль, попробуйте снова\n"); puts("Введите любую хуйню чтобы продолжить");
+                wait(); clear; continue;
             }
         }
     }

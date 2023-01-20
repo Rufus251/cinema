@@ -7,8 +7,28 @@
 #include <windows.h>
 
 
-//доделать проверка есть ли такой пользователь в базе, регулярные выражения (спец символы), карта
+//доделать регулярные выражения (спец символы), карта
 
+int card_check(char card[17]) {
+    if (luhn(card) == 1 && card_check(card) == 1) return 1;
+    else return 0;
+}
+
+int luhn(char card[17]) {
+    int digit = 0, check_digit = 0;
+    for (int i = 15; i >= 0; --i) {
+        digit = card[i] - 48;
+        if (i % 2 == 0) {
+            digit *= 2;
+            if (digit > 9)
+                digit -= 9;
+        }
+        check_digit += digit;
+    }
+    if (check_digit % 10 != 0) {
+        return 0;
+    } else return 1;
+}
 
 void user_data_to_file(user_data user_data) {
     FILE *USER_DATA = fopen("../users.txt", "a");
@@ -26,6 +46,7 @@ void registration() {
 
         scanf("%25s", input_str); fflush(stdin);
         if (strlen(input_str) < 3 || strlen(input_str) > 20) {
+            color_switch_white;
             puts("Некорректный логин, попробуйте снова");
             continue;
         } else {
@@ -53,17 +74,35 @@ void registration() {
                 break;
             } else {
                 color_switch_white;
-                puts("Несовпадающие пароли, попробуйте снова");
+                puts("Несовпадающие пароли, введите пароли еще раз");
                 continue;
             }
         }
 
+    }
+    for (;;) {
+        color_switch_white; puts("Теперь отдай мне свою банковкскую карту (Ровно 16 символов):"); color_switch_green;
+        char input_str[17];
+        scanf("%20s", input_str); fflush(stdin);
+        if (strlen(input_str) != 16) {
+            color_switch_white;
+            puts("Некорректный номер карты, попробуйте снова");
+            continue;
+        } else {
+            for (int i = 0; i < 16; ++i) {
+                printf("%c", input_str[i]);
+                user_data.card[i] = input_str[i];
+            }
+            break;
+        }
     }
     clear;
     color_switch_white; puts("Ваши данные:"); printf("Логин: ");
     color_switch_red; printf("%s\n", user_data.login);
     color_switch_white; printf("Пароль: ");
     color_switch_red; printf("%s\n", user_data.password);
+    color_switch_white; printf("Краденая карта: ");
+    color_switch_red; printf("%s\n", user_data.card);
     color_switch_white; puts("Подтвердить регистрацию? y / n");
 
     for (;;) {
@@ -79,11 +118,9 @@ void registration() {
 
         } else if (strcmp(input_str, "n") == 0) {
             system("cls"); puts("Регистрация отменена, введите любой символ чтобы продолжить");
-            scanf("%c", input_str);
-            start();
+            wait(); clear; start();
         } else {
             puts("Некорректный ответ, попробуйте снова");
-
         }
     }
 }
