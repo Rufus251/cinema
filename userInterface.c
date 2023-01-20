@@ -8,6 +8,7 @@
 #include "addFilm.h"
 #include "authorization.h"
 
+#define skip fgets(temp, 27, USER_DATA)
 
 int check_if_admin(int is_admin){
 
@@ -25,3 +26,11 @@ int check_if_admin(int is_admin){
 void add_film(){
 
 };
+
+
+void change_user_data(char login[27]) {
+    user_sctruct user;
+    strcpy(user.login, login);
+    printf("%s", user.login);
+    wait();
+}
