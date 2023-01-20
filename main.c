@@ -7,15 +7,74 @@
 #include "favorites.h"
 #include "registration.h"
 #include "userInterface.h"
-#include "functions.h" //кидайте туда полезные штуки которые не вписываются в другие либы
+#include "functions.h" // Кидайте туда полезные штуки которые не вписываются в другие либы
+
+void MishaCheck() {
+    char card[20]; //4111111111100031
+    scanf("%s", card); fflush(stdin);
+    printf("\n%d", another_check(card));
+    wait();
+}
+
+
+void VasyaCheck(){
+    FILE *films = fopen("../films.txt", "r");
+    list whole = scan(films);
+    print_list(whole);
+    fclose(films);
+
+
+
+    /*while (1) {
+        printLeftRight(new -> prev -> card);
+        printDitailedCurrent(new -> card);
+        printLeftRight(new -> next -> card);
+    }*/
+
+
+    scanf(" ");
+    //Здесь заканчивается создание списка фильмов
+}
+
+void SvetaCheck(){
+
+}
 
 int main()
 {
+    system("chcp 65001"); system("cls"); // Переключает консоль на русскую кодировку и очищает её,
+    // не убирайте 1 строку из мейна
+    //MishaCheck();
+    //return 0;
+
+    int is_admin = start();
+    int catalog_choice = check_if_admin(is_admin);
+    switch (catalog_choice) {
+        case 1:
+            printf("1");
+            wait();
+            break;
+
+        case 2:
+
+            printf("2");
+            wait();
+            break;
+        case 3:
+
+            add_film();
+            wait();
+            break;
+
+        default: return 0;
+    }
+    return 0;
+    /*
     system("chcp 65001"); system("cls");
-    print_list();
-    scanf(" ");
-    //Здесь заканчивается создание списка фильмов
+
+    VasyaCheck();
 
 
     return 0;
+    */
 }
