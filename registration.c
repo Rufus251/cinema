@@ -61,7 +61,8 @@ void registration() {
             clear;
             continue;
         } else {
-            if (user_login_check(input_str) == 0) {
+            int login_check = user_login_check(input_str);
+            if (login_check == 0 || login_check == 1) {
                 color_switch_white; puts("Такой пользовател уже зарегестрирован, попробуйте другой логин");
                 puts("Введите любой символ чтобы продолжить");
                 wait(); clear;
