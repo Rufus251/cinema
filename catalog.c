@@ -8,16 +8,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-user_data check_admin(int is_admin){
 
-    if( is_admin == 0){
 
+list scan(FILE *in){
+    list l; l.size = 0; l.head = NULL; l.tail = NULL;
+
+    char temp[100];
+    while (fgets(temp, 100, in) != NULL) {
+
+        catalog *c = (catalog *)malloc(sizeof(catalog));
+        temp[strcspn(temp, "\n")] = 0;
+        strcpy(c->name, temp);
+
+        fgets(temp, 100, in);
+        temp[strcspn(temp, "\n")] = 0;
+        c->year = atoi(temp);
+
+        fgets(temp, 100, in);
+        temp[strcspn(temp, "\n")] = 0;
+        strcpy(c->country, temp);
+
+        fgets(temp, 100, in);
+        temp[strcspn(temp, "\n")] = 0;
+        strcpy(c->genre, temp);
+
+        fgets(temp, 100, in);
+        temp[strcspn(temp, "\n")] = 0;
+        c->rating = atof(temp);
+
+        pushback(&l, c);
     }
-    if( is_admin == 1){
-
-    }
-
+    return l;
 }
+
 
 void pushback(list *l, catalog *c) {
     if (l->size > 0) {
@@ -36,42 +59,32 @@ void pushback(list *l, catalog *c) {
     }
 }
 
-list scan(FILE *in){
-    list l; l.size = 0; l.head = NULL; l.tail = NULL;
+/*void filmprint(catalog *c) {
+    printf("%s%d\n%s%s%0.1f\n\n", c->name, c->year, c->country, c->genre, c->rating);
+}*/
 
-    char temp[100];
-    while (fgets(temp, 100, in) != NULL) {
-
-        catalog *c = (catalog *)malloc(sizeof(catalog));
-        strcpy(c->name, temp);
-
-        fgets(temp, 100, in);
-        c->year = atoi(temp);
-
-        fgets(temp, 100, in);
-        strcpy(c->country, temp);
-
-        fgets(temp, 100, in);
-        strcpy(c->genre, temp);
-
-        fgets(temp, 100, in);
-        c->rating = atof(temp);
-
-        pushback(&l, c);
-    }
-    return l;
-}
-
-void filmprint(catalog c) {
-    printf("%s%d\n%s%s%0.1f\n\n", c.name, c.year, c.country, c.genre, c.rating);
-}
-
-void listprint(list l) {
+void print_list(list l) {
     catalog *current = l.head;
     int i = 0;
     while (i < l.size) {
-        filmprint(*current);
+        print_film(current);
         current = current->next;
         i++;
     }
+}
+
+void print_film(catalog *c) {
+    printf("                                 ┌──────────────────────────────────────────────┐\n");
+    printf("┌────────────────────────────────┘                                              └────────────────────────────────┐\n");
+    printf("                                                  %s\n", c->name);
+    printf("    %s                                                                           %s", c->prev->name, c->next->name);
+    printf("                                                                  %s      \n", c->genre);
+    printf("    %s                                                                           %s", c->prev->genre, c->next->genre);
+    printf("                                                                  %s      \n", c->country);
+    printf("    %s                                                                           %s\n", c->prev->country, c->next->country);
+    printf("                                                      %.1f+                     \n", c->rating);
+    printf("    %.1f+                                                                                      %.1f+ \n", c->prev->rating, c->next->rating);
+    printf("                                                    %d                     \n", c->year);
+    printf("└────────────────────────────────┐                                              ┌────────────────────────────────┘\n");
+    printf("                                 └──────────────────────────────────────────────┘\n");
 }
