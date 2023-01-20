@@ -8,26 +8,25 @@
 
 void add_film(){
     FILE *FILMS = fopen("../films.txt", "r");
-    char temp[100]; char str[100]; int flag = 0;
-    printf("Введите фильм\n");SetConsoleCP(1251);
+    char temp[100]; char str[100]; int flag;
+    printf("Введите фильм\n");
+    SetConsoleCP(1251);
     gets(str); strcat(str, "\n"); fflush(stdin); SetConsoleCP(866);
-    while(fgets(temp, 100, FILMS) != NULL){
-        if(strcmp(temp, str) == 0){
-            flag = 1;
+    while(fgets(temp, 100, FILMS) != NULL) {
+        if (strcmp(temp, str) == 0) {
+            printf("Фильм уже добавлен");
+            break;
         }
-        else (flag = 0);
-    }
+        else{
+            fclose(FILMS);
+            FILMS = fopen("../films.txt", "a");
 
-    if(flag == 1){
-        printf("Фильм уже добавлен");
-    }
-    else{
-        fclose(FILMS);
-        FILMS = fopen("../films.txt", "a");
-        printf("Добавь меня полностью папочка");
-        fputs(str, FILMS); fflush(stdin);
+            printf("Добавь меня полностью папочка");
+            for (int i = 0; i < 4; ++i) {
+                fputs(str, FILMS);
+                gets(str);
 
+            }
+            break;
+        }
     }
-    fclose(FILMS);
-    wait();
-}
