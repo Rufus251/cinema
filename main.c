@@ -49,7 +49,25 @@ int main()
 
     int is_admin = start();
     int catalog_choice = check_if_admin(is_admin);
+    switch (catalog_choice) {
+        case 1:
+            printf("1");
+            wait();
+            break;
 
+        case 2:
+
+            printf("2");
+            wait();
+            break;
+        case 3:
+
+            printf("3");
+            wait();
+            break;
+
+        default: return 0;
+    }
     return 0;
     /*
     system("chcp 65001"); system("cls");
