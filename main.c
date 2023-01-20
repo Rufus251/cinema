@@ -10,7 +10,10 @@
 #include "functions.h" // Кидайте туда полезные штуки которые не вписываются в другие либы
 
 void MishaCheck() {
-    start();
+    char card[20]; //4111111111100031
+    scanf("%s", card); fflush(stdin);
+    printf("\n%d", another_check(card));
+    wait();
 }
 
 
@@ -42,6 +45,7 @@ int main()
     system("chcp 65001"); system("cls"); // Переключает консоль на русскую кодировку и очищает её,
     // не убирайте 1 строку из мейна
     //MishaCheck();
+    //return 0;
 
     int is_admin = start();
     int catalog_choice = check_if_admin(is_admin);
@@ -55,20 +59,4 @@ int main()
 
     return 0;
     */
-    /*char input_str[25];
-    for (;;) {
-        puts("Вход / Регистрация\nВведите 1, чтобы зайти в уже существующий аккаунт или 2, чтобы зарегестрироваться");
-        scanf("%25s", input_str); fflush(stdin);
-        if (strcmp(input_str, "1") == 0) {
-            system("cls"); login();
-        } else if (strcmp(input_str, "2") == 0) {
-            system("cls"); registration();
-        } else {
-            system("cls"); puts("Некорректный ответ.\nВведите 1, чтобы зайти в уже существующий аккаунт или 2, чтобы зарегестрироваться");
-        }
-    }
-    return 0;
-    */
-
-
 }
