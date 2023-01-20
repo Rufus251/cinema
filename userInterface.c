@@ -31,35 +31,6 @@ int check_if_admin(int is_admin) {
 }
 
 
-void add_film(){
-    FILE *FILMS = fopen("../films.txt", "r");
-    char temp[100]; char str[100]; int flag = 0;
-    printf("Введите фильм\n");
-    SetConsoleCP(1251);
-    gets(str); fflush(stdin);
-    SetConsoleCP(866);
-    while(fgets(temp, 100, FILMS) != NULL){
-        if(strcmp(temp, str) == 0){
-            flag = 1;
-
-        }
-        else (flag = 0);
-    }
-
-    if(flag == 1){
-        printf("Фильм уже добавлен");
-    }
-    else{
-        fclose(FILMS);
-
-        FILE *FILM = fopen("../films.txt", "a");
-        printf("Добавь меня полностью папочка\n");
-        fprintf(FILM, "\n%s", str); fflush(stdin);
-    }
-    fclose(FILMS);
-    wait();
-};
-
 
 void change_user_data(char login[27]) {
     user_sctruct user;
