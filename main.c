@@ -17,8 +17,18 @@ void MishaCheck() {
 void VasyaCheck(){
     FILE *films = fopen("../films.txt", "r");
     list whole = scan(films);
-    listprint(whole);
+    print_list(whole);
     fclose(films);
+
+
+
+    /*while (1) {
+        printLeftRight(new -> prev -> card);
+        printDitailedCurrent(new -> card);
+        printLeftRight(new -> next -> card);
+    }*/
+
+
     scanf(" ");
     //Здесь заканчивается создание списка фильмов
 }
