@@ -20,6 +20,7 @@ typedef struct list {
     catalog *tail;
 } list;
 
+
 user_data check_admin(int is_admin);
 extern void pushback(list *l, catalog *f);
 extern list scan(FILE *in);
